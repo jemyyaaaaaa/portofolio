@@ -20,7 +20,7 @@ body{
   background:#000;
 }
 
-/* ===== INTRO CLEAN ===== */
+/* INTRO */
 .intro{
   position:fixed;
   width:100%;
@@ -30,48 +30,32 @@ body{
   justify-content:center;
   align-items:center;
   z-index:9999;
-  animation:fadeOut 2.8s ease forwards;
-  animation-delay:2.2s;
+  animation:fadeOut 2.5s ease forwards;
+  animation-delay:2s;
 }
 
 .intro h1{
-  font-size:48px;
+  font-size:45px;
   color:#fff;
-  letter-spacing:3px;
   opacity:0;
-  animation:introIn 2.2s ease forwards;
+  animation:introIn 2s ease forwards;
 }
 
-/* intro animation */
 @keyframes introIn{
-  0%{
-    opacity:0;
-    transform:scale(1.2);
-    filter:blur(8px);
-  }
-  60%{
-    opacity:1;
-    filter:blur(0);
-  }
-  100%{
-    opacity:1;
-    transform:scale(1);
-  }
+  0%{opacity:0; transform:scale(1.2); filter:blur(8px);}
+  100%{opacity:1; transform:scale(1); filter:blur(0);}
 }
 
 @keyframes fadeOut{
-  to{
-    opacity:0;
-    visibility:hidden;
-  }
+  to{opacity:0; visibility:hidden;}
 }
 
-/* ===== SLIDER ===== */
+/* SLIDER */
 .container{
   display:flex;
   width:400vw;
   height:100vh;
-  transition:transform .8s ease;
+  transition:transform .7s ease;
 }
 
 section{
@@ -79,125 +63,111 @@ section{
   height:100vh;
   position:relative;
   flex-shrink:0;
-  overflow-y:auto;
   color:#fff;
 }
 
-/* background */
+/* BACKGROUND */
 .bg{
   position:absolute;
   width:100%;
   height:100%;
   background-size:cover;
   background-position:center;
-  filter:brightness(.55);
+  filter:brightness(.5);
 }
 
 .overlay{
   position:absolute;
   width:100%;
   height:100%;
-  background:linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.25));
+  background:linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.2));
 }
 
-/* ===== CENTER FIX ===== */
+/* CENTER */
 .content{
   position:absolute;
   top:50%;
   left:50%;
-  transform:translate(-50%, -50%);
+  transform:translate(-50%,-50%);
   width:90%;
   max-width:520px;
 }
 
-/* card */
 .box{
   background:rgba(255,255,255,.08);
-  padding:30px;
-  border-radius:18px;
+  padding:25px;
+  border-radius:15px;
   backdrop-filter:blur(10px);
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
-/* title */
+/* TEXT */
 h1{
-  font-size:46px;
-  font-weight:700;
+  font-size:40px;
   text-transform:uppercase;
-  letter-spacing:2px;
   margin-bottom:10px;
 }
 
-/* text */
 p{
-  font-size:15px;
-  line-height:1.7;
+  font-size:14px;
+  line-height:1.6;
   opacity:.9;
-  font-weight:300;
 }
 
-/* image (lebih kecil & rapih) */
+/* IMAGE */
 .img-box{
   margin-top:20px;
+  display:flex;
+  justify-content:center;
 }
 
 .img-box img{
-  width:55%;
+  width:40%; /* 🔥 kecil & aman */
   border-radius:10px;
-  box-shadow:0 8px 20px rgba(0,0,0,.35);
 }
 
-/* hobby list rapih */
-.hobby-list{
+/* HOBBY LIST */
+ul{
   margin-top:10px;
   padding-left:18px;
 }
 
-.hobby-list li{
-  margin:6px 0;
-  opacity:.9;
+li{
+  margin:5px 0;
 }
 
-/* navbar */
+/* NAV */
 .navbar{
   position:fixed;
-  top:18px;
+  top:15px;
   left:50%;
   transform:translateX(-50%);
   display:flex;
-  gap:16px;
+  gap:12px;
   background:rgba(0,0,0,.6);
-  padding:10px 16px;
-  border-radius:25px;
+  padding:8px 14px;
+  border-radius:20px;
   z-index:999;
-  backdrop-filter:blur(10px);
 }
 
 .navbar a{
   color:#fff;
   text-decoration:none;
-  font-size:13px;
-  opacity:.8;
+  font-size:12px;
   cursor:pointer;
+  opacity:.8;
 }
 
-.navbar a:hover{
-  opacity:1;
-}
-
-/* button */
+/* BUTTON */
 .btn{
   position:fixed;
   top:50%;
   transform:translateY(-50%);
-  font-size:24px;
-  background:rgba(0,0,0,.4);
-  border:none;
+  background:rgba(0,0,0,.5);
   color:#fff;
-  padding:10px 12px;
-  border-radius:10px;
+  border:none;
+  padding:8px 10px;
   cursor:pointer;
-  z-index:999;
+  border-radius:8px;
 }
 
 .left{left:10px;}
@@ -208,7 +178,7 @@ p{
 
 <body>
 
-<!-- INTRO CLEAN -->
+<!-- INTRO -->
 <div class="intro">
   <h1>HI, INI JEMY</h1>
 </div>
@@ -228,31 +198,31 @@ p{
 
   <!-- HOME -->
   <section>
-    <div class="bg" style="background-image:url('bg1.jpg')"></div>
+    <div class="bg" style="background:#111;"></div>
     <div class="overlay"></div>
     <div class="content">
       <div class="box">
         <h1>HI, INI JEMY</h1>
-        <p>portofolio clean dan profesional.</p>
+        <p>portfolio clean dan simple.</p>
       </div>
     </div>
   </section>
 
   <!-- TENTANG -->
   <section>
-    <div class="bg" style="background-image:url('bg2.jpg')"></div>
+    <div class="bg" style="background:#222;"></div>
     <div class="overlay"></div>
     <div class="content">
       <div class="box">
         <h1>TENTANG</h1>
-        <p>saya berkembang di dunia otomotif dan teknologi.</p>
+        <p>saya belajar otomotif dan teknologi.</p>
       </div>
     </div>
   </section>
 
   <!-- SKILL -->
   <section>
-    <div class="bg" style="background-image:url('bg3.jpg')"></div>
+    <div class="bg" style="background:#333;"></div>
     <div class="overlay"></div>
     <div class="content">
       <div class="box">
@@ -260,11 +230,11 @@ p{
         <h1>SKILL</h1>
 
         <p>
-          mekanik sepeda motor<br>
-          bore up mesin<br>
-          tune up performa motor<br>
-          service ringan motor<br>
-          upgrade kirian / cvt setup
+          mekanik motor<br>
+          bore up<br>
+          tune up<br>
+          service ringan<br>
+          upgrade kirian
         </p>
 
         <div class="img-box">
@@ -277,16 +247,14 @@ p{
 
   <!-- HOBBY -->
   <section>
-    <div class="bg" style="background-image:url('bg4.jpg')"></div>
+    <div class="bg" style="background:#444;"></div>
     <div class="overlay"></div>
     <div class="content">
       <div class="box">
 
         <h1>HOBBY</h1>
 
-        <p>berkelana:</p>
-
-        <ul class="hobby-list">
+        <ul>
           <li>mendaki gunung</li>
           <li>curug</li>
           <li>pantai</li>
@@ -322,20 +290,6 @@ function go(i){
   index = i;
   update();
 }
-
-/* swipe */
-let startX = 0;
-
-document.addEventListener("touchstart", e=>{
-  startX = e.touches[0].clientX;
-});
-
-document.addEventListener("touchend", e=>{
-  let endX = e.changedTouches[0].clientX;
-
-  if(startX - endX > 50) move(1);
-  if(endX - startX > 50) move(-1);
-});
 </script>
 
 </body>
