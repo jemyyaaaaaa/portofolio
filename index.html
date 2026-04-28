@@ -18,15 +18,16 @@ body {
   background:black;
 }
 
-/* slider utama */
+/* SLIDER */
 .container {
   display:flex;
   width:400vw;
   height:100vh;
-  transition: transform 0.6s ease;
+  transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
 }
 
-/* tiap halaman */
+/* PAGE */
 section {
   width:100vw;
   height:100vh;
@@ -35,94 +36,105 @@ section {
   color:white;
 }
 
-/* background */
+/* BACKGROUND */
 .bg {
   position:absolute;
   width:100%;
   height:100%;
   background-size:cover;
   background-position:center;
-  filter:brightness(0.5);
+  filter:brightness(0.55);
 }
 
-/* overlay */
+/* OVERLAY */
 .overlay {
   position:absolute;
   width:100%;
   height:100%;
-  background:linear-gradient(to right,#000000cc,#00000055);
+  background:linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.3));
 }
 
-/* content */
+/* CONTENT */
 .content {
   position:absolute;
   top:50%;
   left:80px;
   transform:translateY(-50%);
-  max-width:500px;
+  max-width:520px;
 }
 
 .box {
   background:rgba(255,255,255,0.08);
   padding:30px;
   border-radius:20px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* text */
+/* TEXT */
 h1 {
-  font-size:50px;
+  font-size:48px;
   margin-bottom:10px;
 }
 
 p {
   font-size:16px;
   line-height:1.6;
+  opacity:0.9;
 }
 
-/* navbar */
+/* IMAGE */
+.img-box img {
+  width:100%;
+  margin-top:15px;
+  border-radius:12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* NAVBAR */
 .navbar {
   position:fixed;
   top:20px;
   left:50%;
   transform:translateX(-50%);
   display:flex;
-  gap:20px;
-  background:rgba(0,0,0,0.5);
+  gap:18px;
+  background:rgba(0,0,0,0.6);
   padding:10px 20px;
-  border-radius:20px;
+  border-radius:25px;
   z-index:999;
+  backdrop-filter: blur(10px);
 }
 
 .navbar a {
   color:white;
   text-decoration:none;
   cursor:pointer;
+  font-size:14px;
+  opacity:0.85;
 }
 
-/* image */
-.img-box img {
-  width:100%;
-  margin-top:15px;
-  border-radius:10px;
+.navbar a:hover {
+  opacity:1;
 }
 
-/* button */
+/* BUTTON */
 .btn {
   position:fixed;
   top:50%;
   transform:translateY(-50%);
-  font-size:25px;
+  font-size:26px;
   background:rgba(0,0,0,0.5);
   border:none;
   color:white;
-  padding:10px;
+  padding:10px 14px;
   cursor:pointer;
   z-index:999;
+  border-radius:12px;
 }
 
-.left { left:10px; }
-.right { right:10px; }
+.left { left:12px; }
+.right { right:12px; }
 
 </style>
 </head>
@@ -141,32 +153,35 @@ p {
 
 <div class="container" id="slider">
 
+  <!-- HOME -->
   <section>
     <div class="bg" style="background-image:url('bg1.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
       <h1>hai, saya jemy</h1>
-      <p>ini portofolio saya dengan tampilan sederhana dan profesional.</p>
+      <p>portofolio sederhana, clean, dan profesional.</p>
     </div>
   </section>
 
+  <!-- TENTANG -->
   <section>
     <div class="bg" style="background-image:url('bg2.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
-      <h1>TENTANG</h1>
-      <p>saya sedang belajar dan berkembang di dunia teknologi.</p>
+      <h1>tentang</h1>
+      <p>saya sedang belajar teknologi dan terus berkembang setiap hari.</p>
     </div>
   </section>
 
+  <!-- SKILL -->
   <section>
     <div class="bg" style="background-image:url('bg3.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
-      <h1>SKILL</h1>
+      <h1>skill</h1>
       <p>mekanik kendaraan ringan</p>
 
-      <!-- FOTO SKILL FIX DI HALAMAN INI -->
+      <!-- FIX: skill1 harus di sini -->
       <div class="img-box">
         <img src="skill1.jpg" alt="skill">
       </div>
@@ -174,14 +189,15 @@ p {
     </div>
   </section>
 
+  <!-- HOBBY -->
   <section>
     <div class="bg" style="background-image:url('bg4.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
-      <h1>HOBBY</h1>
+      <h1>hobby</h1>
       <p>berkelana</p>
 
-      <!-- FOTO HOBBY FIX DI HALAMAN INI -->
+      <!-- FIX: hobby1 harus di sini -->
       <div class="img-box">
         <img src="hobby1.jpg" alt="hobby">
       </div>
@@ -210,6 +226,20 @@ function go(i){
   index = i;
   update();
 }
+
+/* swipe HP biar makin keren */
+let startX = 0;
+
+document.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+
+  if(startX - endX > 50) move(1);
+  if(endX - startX > 50) move(-1);
+});
 </script>
 
 </body>
