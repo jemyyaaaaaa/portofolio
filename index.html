@@ -20,7 +20,7 @@ body{
   background:#000;
 }
 
-/* 🎬 CINEMATIC INTRO */
+/* ===== INTRO CLEAN ===== */
 .intro{
   position:fixed;
   width:100%;
@@ -30,64 +30,33 @@ body{
   justify-content:center;
   align-items:center;
   z-index:9999;
-  animation:fadeOut 3.5s ease forwards;
-  animation-delay:3s;
+  animation:fadeOut 2.8s ease forwards;
+  animation-delay:2.2s;
 }
 
-/* noise overlay */
-.intro::before{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif');
-  opacity:0.05;
-  mix-blend-mode:screen;
-}
-
-.intro-text{
-  color:white;
-  text-align:center;
-  letter-spacing:4px;
-}
-
-/* animasi teks cinematic */
-.intro-text h1{
-  font-size:60px;
+.intro h1{
+  font-size:48px;
+  color:#fff;
+  letter-spacing:3px;
   opacity:0;
-  transform:scale(1.4);
-  animation:titleIn 2.5s ease forwards;
+  animation:introIn 2.2s ease forwards;
 }
 
-.intro-text p{
-  margin-top:10px;
-  font-size:14px;
-  opacity:0;
-  letter-spacing:6px;
-  animation:subIn 2.5s ease forwards;
-  animation-delay:.6s;
-}
-
-/* KEYFRAMES */
-@keyframes titleIn{
+/* intro animation */
+@keyframes introIn{
   0%{
     opacity:0;
-    transform:scale(1.4);
-    filter:blur(10px);
+    transform:scale(1.2);
+    filter:blur(8px);
   }
-  50%{
+  60%{
     opacity:1;
-    filter:blur(0px);
+    filter:blur(0);
   }
   100%{
     opacity:1;
     transform:scale(1);
   }
-}
-
-@keyframes subIn{
-  from{opacity:0; transform:translateY(10px);}
-  to{opacity:.8; transform:translateY(0);}
 }
 
 @keyframes fadeOut{
@@ -97,12 +66,12 @@ body{
   }
 }
 
-/* SLIDER */
+/* ===== SLIDER ===== */
 .container{
   display:flex;
   width:400vw;
   height:100vh;
-  transition:transform .85s cubic-bezier(0.77,0,0.175,1);
+  transition:transform .8s ease;
 }
 
 section{
@@ -114,7 +83,7 @@ section{
   color:#fff;
 }
 
-/* BG */
+/* background */
 .bg{
   position:absolute;
   width:100%;
@@ -124,113 +93,129 @@ section{
   filter:brightness(.55);
 }
 
-/* OVERLAY */
 .overlay{
   position:absolute;
   width:100%;
   height:100%;
-  background:linear-gradient(to right,rgba(0,0,0,.88),rgba(0,0,0,.25));
+  background:linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.25));
 }
 
-/* CENTER */
+/* ===== CENTER FIX ===== */
 .content{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%, -50%);
   width:90%;
-  max-width:550px;
+  max-width:520px;
 }
 
-/* BOX */
+/* card */
 .box{
   background:rgba(255,255,255,.08);
-  padding:32px;
-  border-radius:22px;
-  backdrop-filter:blur(12px);
-  box-shadow:0 10px 40px rgba(0,0,0,.4);
+  padding:30px;
+  border-radius:18px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
-/* TITLE */
+/* title */
 h1{
-  font-size:52px;
+  font-size:46px;
   font-weight:700;
   text-transform:uppercase;
   letter-spacing:2px;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 
+/* text */
 p{
-  font-size:16px;
+  font-size:15px;
   line-height:1.7;
   opacity:.9;
   font-weight:300;
 }
 
-/* IMAGE */
-.img-box img{
-  width:60%;
-  margin-top:14px;
-  border-radius:12px;
-  box-shadow:0 10px 25px rgba(0,0,0,.4);
+/* image (lebih kecil & rapih) */
+.img-box{
+  margin-top:20px;
 }
 
-/* NAV */
+.img-box img{
+  width:55%;
+  border-radius:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,.35);
+}
+
+/* hobby list rapih */
+.hobby-list{
+  margin-top:10px;
+  padding-left:18px;
+}
+
+.hobby-list li{
+  margin:6px 0;
+  opacity:.9;
+}
+
+/* navbar */
 .navbar{
   position:fixed;
   top:18px;
   left:50%;
   transform:translateX(-50%);
   display:flex;
-  gap:18px;
+  gap:16px;
   background:rgba(0,0,0,.6);
-  padding:10px 18px;
-  border-radius:30px;
+  padding:10px 16px;
+  border-radius:25px;
   z-index:999;
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(10px);
 }
 
 .navbar a{
   color:#fff;
   text-decoration:none;
-  font-size:14px;
+  font-size:13px;
   opacity:.8;
   cursor:pointer;
 }
 
-/* BTN */
+.navbar a:hover{
+  opacity:1;
+}
+
+/* button */
 .btn{
   position:fixed;
   top:50%;
   transform:translateY(-50%);
-  font-size:26px;
-  background:rgba(0,0,0,.5);
+  font-size:24px;
+  background:rgba(0,0,0,.4);
   border:none;
   color:#fff;
-  padding:10px 14px;
-  border-radius:12px;
+  padding:10px 12px;
+  border-radius:10px;
   cursor:pointer;
   z-index:999;
 }
 
-.left{left:12px;}
-.right{right:12px;}
+.left{left:10px;}
+.right{right:10px;}
 
 </style>
 </head>
 
 <body>
 
-<!-- 🎬 CINEMATIC INTRO -->
+<!-- INTRO CLEAN -->
 <div class="intro">
-  <div class="intro-text">
-    <h1>HI, INI JEMY</h1>
-    <p>MECHANIC • MOTOR BUILDER • EXPLORER</p>
-  </div>
+  <h1>HI, INI JEMY</h1>
 </div>
 
+<!-- NAV -->
 <div class="navbar">
-  <a onclick="go(0)">HI, INI JEMY</a>
+  <a onclick="go(0)">HOME</a>
   <a onclick="go(1)">TENTANG</a>
   <a onclick="go(2)">SKILL</a>
   <a onclick="go(3)">HOBBY</a>
@@ -248,7 +233,7 @@ p{
     <div class="content">
       <div class="box">
         <h1>HI, INI JEMY</h1>
-        <p>portofolio modern, clean, dan profesional.</p>
+        <p>portofolio clean dan profesional.</p>
       </div>
     </div>
   </section>
@@ -299,10 +284,14 @@ p{
 
         <h1>HOBBY</h1>
 
-        <p>
-          berkelana:<br>
-          gunung • curug • pantai • bukit
-        </p>
+        <p>berkelana:</p>
+
+        <ul class="hobby-list">
+          <li>mendaki gunung</li>
+          <li>curug</li>
+          <li>pantai</li>
+          <li>bukit</li>
+        </ul>
 
         <div class="img-box">
           <img src="hobby1.jpg">
