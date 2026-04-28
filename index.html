@@ -4,12 +4,14 @@
 <meta charset="UTF-8">
 <title>portofolio saya</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -17,21 +19,18 @@ body {
   background: black;
 }
 
-/* LOADING */
-.loader {
+/* progress bar */
+.progress {
   position: fixed;
-  width: 100%;
-  height: 100%;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 20px;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: #00ffd5;
   z-index: 9999;
 }
 
-/* CONTAINER */
+/* container */
 .container {
   display: flex;
   width: 400vw;
@@ -49,87 +48,114 @@ section {
   color: white;
 }
 
-/* BACKGROUND PARALLAX */
+/* background */
 .bg {
   position: absolute;
-  width: 110%;
-  height: 110%;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
-  filter: brightness(0.4);
-  transform: scale(1.1);
+  filter: brightness(0.45);
+  transition: transform 1s;
 }
 
-/* OVERLAY */
+/* parallax */
+section:hover .bg {
+  transform: scale(1.05);
+}
+
+/* overlay */
 .overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, #000000cc, #00000033);
+  background: linear-gradient(to right, #000000dd, #00000033);
 }
 
-/* CONTENT */
+/* content */
 .content {
   position: absolute;
   top: 50%;
   left: 80px;
   transform: translateY(-50%);
-  opacity: 0;
-  transition: 1s;
+  max-width: 500px;
+  animation: fade 1s ease;
 }
 
-.show {
-  opacity: 1;
-  transform: translateY(-50%);
+@keyframes fade {
+  from {opacity:0; transform:translateY(40px);}
+  to {opacity:1; transform:translateY(-50%);}
 }
 
 .box {
-  background: rgba(255,255,255,0.1);
-  padding: 25px;
-  border-radius: 15px;
-  backdrop-filter: blur(15px);
-  max-width: 450px;
+  background: rgba(255,255,255,0.08);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 60px;
+  font-weight: 700;
   margin-bottom: 10px;
 }
 
-/* GRID FOTO */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-top: 10px;
+p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
 }
 
-.grid img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-/* NAVBAR */
+/* navbar */
 .navbar {
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 20px;
-  background: rgba(0,0,0,0.4);
-  padding: 10px 20px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
+  gap: 30px;
+  background: rgba(0,0,0,0.5);
+  padding: 12px 30px;
+  border-radius: 30px;
+  backdrop-filter: blur(15px);
   z-index: 999;
 }
 
 .navbar a {
   color: white;
   text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
 }
 
-/* BUTTON */
+.navbar a.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #00ffd5;
+  bottom: -5px;
+  left: 0;
+}
+
+/* image */
+.img-box {
+  margin-top: 15px;
+}
+
+.img-box img {
+  width: 100%;
+  border-radius: 12px;
+  transition: 0.4s;
+}
+
+.img-box img:hover {
+  transform: scale(1.05);
+}
+
+/* tombol */
 .btn {
   position: fixed;
   top: 50%;
@@ -146,39 +172,18 @@ h1 {
 .left { left: 10px; }
 .right { right: 10px; }
 
-/* DOTS */
-.dots {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  background: gray;
-  border-radius: 50%;
-}
-
-.active {
-  background: white;
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="loader" id="loader">loading...</div>
+<div class="progress" id="progress"></div>
 
 <div class="navbar">
-  <a href="#">home</a>
-  <a href="#">tentang</a>
-  <a href="#">skill</a>
-  <a href="#">hobby</a>
+  <a onclick="go(0)" class="active">home</a>
+  <a onclick="go(1)">tentang</a>
+  <a onclick="go(2)">skill</a>
+  <a onclick="go(3)">hobby</a>
 </div>
 
 <button class="btn left" onclick="move(-1)">❮</button>
@@ -186,49 +191,43 @@ h1 {
 
 <div class="container" id="slider">
 
-  <!-- HOME -->
   <section>
     <div class="bg" style="background-image:url('bg1.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
-      <h1>hai, saya jemy</h1>
-      <p>ini portofolio dengan animasi dan desain modern.</p>
+      <h1>hai, saya jeremy</h1>
+      <p>portofolio modern dengan tampilan profesional dan interaktif.</p>
     </div>
   </section>
 
-  <!-- TENTANG -->
   <section>
     <div class="bg" style="background-image:url('bg2.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
       <h1>TENTANG</h1>
-      <p>saya sedang belajar membuat website dan ingin berkembang di dunia teknologi.</p>
+      <p>saya fokus belajar coding, web development, dan teknologi untuk masa depan.</p>
     </div>
   </section>
 
-  <!-- KEAHLIAN -->
   <section>
     <div class="bg" style="background-image:url('bg3.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
       <h1>KEAHLIAN</h1>
-      <p>mekanik kendaraan ringan</p>
-
-      <div class="grid">
+      <p>html, python, excel</p>
+      <div class="img-box">
         <img src="skill1.jpg">
       </div>
     </div>
   </section>
 
-  <!-- HOBBY -->
   <section>
     <div class="bg" style="background-image:url('bg4.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
       <h1>HOBBY</h1>
-      <p>berkelana</p>
-
-      <div class="grid">
+      <p>ngoding dan eksplor teknologi</p>
+      <div class="img-box">
         <img src="hobby1.jpg">
       </div>
     </div>
@@ -236,53 +235,46 @@ h1 {
 
 </div>
 
-<div class="dots">
-  <div class="dot active"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-</div>
-
 <script>
 let index = 0;
 const slider = document.getElementById("slider");
-const dots = document.querySelectorAll(".dot");
-const contents = document.querySelectorAll(".content");
-
-/* loading */
-window.onload = () => {
-  document.getElementById("loader").style.display = "none";
-  showContent();
-};
+const nav = document.querySelectorAll(".navbar a");
+const progress = document.getElementById("progress");
 
 function move(dir){
   index += dir;
   if(index < 0) index = 0;
   if(index > 3) index = 3;
+  scroll();
+}
 
+function go(i){
+  index = i;
+  scroll();
+}
+
+function scroll(){
   slider.scrollTo({
     left: index * window.innerWidth,
     behavior: "smooth"
   });
-
-  update();
+  updateNav();
+  updateProgress();
 }
 
-function update(){
-  dots.forEach(d => d.classList.remove("active"));
-  dots[index].classList.add("active");
-  showContent();
+function updateNav(){
+  nav.forEach(n => n.classList.remove("active"));
+  nav[index].classList.add("active");
 }
 
-function showContent(){
-  contents.forEach(c => c.classList.remove("show"));
-  contents[index].classList.add("show");
+function updateProgress(){
+  progress.style.width = ((index+1)/4)*100 + "%";
 }
 
-/* scroll detect */
 slider.addEventListener("scroll", () => {
   index = Math.round(slider.scrollLeft / window.innerWidth);
-  update();
+  updateNav();
+  updateProgress();
 });
 </script>
 
