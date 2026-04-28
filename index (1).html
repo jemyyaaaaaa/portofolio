@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PORTOFOLIO JEMY</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  overflow:hidden;
+  background:#000;
+}
+
+/* INTRO */
+.intro{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  animation:fadeOut 2.5s ease forwards;
+  animation-delay:2s;
+}
+
+.intro h1{
+  font-size:45px;
+  color:#fff;
+  opacity:0;
+  animation:introIn 2s ease forwards;
+}
+
+@keyframes introIn{
+  0%{opacity:0; transform:scale(1.2); filter:blur(8px);}
+  100%{opacity:1; transform:scale(1); filter:blur(0);}
+}
+
+@keyframes fadeOut{
+  to{opacity:0; visibility:hidden;}
+}
+
+/* SLIDER */
+.container{
+  display:flex;
+  width:400vw;
+  height:100vh;
+  transition:transform .7s ease;
+}
+
+section{
+  width:100vw;
+  height:100vh;
+  position:relative;
+  flex-shrink:0;
+  color:#fff;
+}
+
+/* BACKGROUND */
+.bg{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-size:cover;
+  background-position:center;
+  filter:brightness(.5);
+}
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.2));
+}
+
+/* CENTER */
+.content{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:90%;
+  max-width:520px;
+}
+
+.box{
+  background:rgba(255,255,255,.08);
+  padding:25px;
+  border-radius:15px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
+}
+
+/* TEXT */
+h1{
+  font-size:38px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+p{
+  font-size:14px;
+  line-height:1.6;
+  opacity:.9;
+}
+
+/* LIST PROFESSIONAL */
+.list{
+  margin-top:15px;
+}
+
+.list p{
+  font-size:14px;
+  margin:6px 0;
+  padding-left:10px;
+  border-left:2px solid rgba(255,255,255,.3);
+}
+
+/* IMAGE */
+.img-box{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+}
+
+.img-box img{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,.5);
+  transition:.3s;
+}
+
+.img-box img:hover{
+  transform:scale(1.05);
+}
+
+/* NAV */
+.navbar{
+  position:fixed;
+  top:15px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:12px;
+  background:rgba(0,0,0,.6);
+  padding:8px 14px;
+  border-radius:20px;
+  z-index:999;
+}
+
+.navbar a{
+  color:#fff;
+  text-decoration:none;
+  font-size:12px;
+  cursor:pointer;
+  opacity:.8;
+  transition:.3s;
+}
+
+.navbar a:hover{
+  opacity:1;
+}
+
+/* BUTTON */
+.btn{
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.5);
+  color:#fff;
+  border:none;
+  padding:8px 10px;
+  cursor:pointer;
+  border-radius:8px;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:rgba(255,255,255,.2);
+}
+
+.left{left:10px;}
+.right{right:10px;}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- INTRO -->
+
+<div class="intro">
+  <h1>HI, INI JEMY</h1>
+</div>
+
+<!-- NAV -->
+
+<div class="navbar">
+  <a onclick="go(0)">HOME</a>
+  <a onclick="go(1)">TENTANG</a>
+  <a onclick="go(2)">SKILL</a>
+  <a onclick="go(3)">HOBBY</a>
+</div>
+
+<button class="btn left" onclick="move(-1)">❮</button> <button class="btn right" onclick="move(1)">❯</button>
+
+<div class="container" id="slider">
+
+  <!-- HOME -->
+
+  <section>
+    <div class="bg" style="background:#111;"></div>
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="box">
+        <h1>HI, INI JEMY</h1>
+        <p>Portfolio clean dan simple.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TENTANG -->
+
+  <section>
+    <div class="bg" style="background:#222;"></div>
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="box">
+        <h1>TENTANG</h1>
+        <p>Saya belajar otomotif dan teknologi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILL -->
+
+  <section>
+    <div class="bg" style="background:#333;"></div>
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="box">
+
+```
+    <h1>SKILL</h1>
+
+    <div class="list">
+      <p>Mekanik Motor</p>
+      <p>Bore Up</p>
+      <p>Tune Up</p>
+      <p>Service Ringan</p>
+      <p>Upgrade Kaki-kaki</p>
+    </div>
+
+    <div class="img-box">
+      <img src="skill1.jpg">
+    </div>
+
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- HOBBY -->
+
+  <section>
+    <div class="bg" style="background:#444;"></div>
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="box">
+
+```
+    <h1>HOBBY</h1>
+
+    <div class="list">
+      <p>Mendaki Gunung</p>
+      <p>Eksplor Curug</p>
+      <p>Ke Pantai</p>
+    </div>
+
+    <div class="img-box">
+      <img src="hobby1.jpg">
+    </div>
+
+  </div>
+</div>
+```
+
+  </section>
+
+</div>
+
+<script>
+let index = 0;
+const slider = document.getElementById("slider");
+
+function update(){
+  slider.style.transform = `translateX(-${index * 100}vw)`;
+}
+
+function move(dir){
+  index += dir;
+  if(index < 0) index = 0;
+  if(index > 3) index = 3;
+  update();
+}
+
+function go(i){
+  index = i;
+  update();
+}
+</script>
+
+</body>
+</html>
