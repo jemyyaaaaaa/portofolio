@@ -2,175 +2,161 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>portofolio saya</title>
+<title>portofolio jemy</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
 }
 
 body {
-  overflow: hidden;
-  background: black;
+  overflow-x:auto;
+  overflow-y:hidden;
+  background:black;
 }
 
 /* progress bar */
 .progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: #00ffd5;
-  z-index: 9999;
+  position:fixed;
+  top:0;
+  left:0;
+  height:3px;
+  width:0%;
+  background:#00ffd5;
+  z-index:9999;
 }
 
 /* container */
 .container {
-  display: flex;
-  width: 400vw;
-  height: 100vh;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  display:flex;
+  width:400vw;
+  height:100vh;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
 }
 
 section {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  scroll-snap-align: start;
-  color: white;
+  width:100vw;
+  height:100vh;
+  position:relative;
+  scroll-snap-align:start;
+  color:white;
 }
 
 /* background */
 .bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.45);
-  transition: transform 1s;
-}
-
-/* parallax */
-section:hover .bg {
-  transform: scale(1.05);
+  position:absolute;
+  width:110%;
+  height:110%;
+  background-size:cover;
+  background-position:center;
+  filter:brightness(0.5);
+  transition:transform 0.3s;
 }
 
 /* overlay */
 .overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, #000000dd, #00000033);
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to right,#000000cc,#00000033);
 }
 
 /* content */
 .content {
-  position: absolute;
-  top: 50%;
-  left: 80px;
-  transform: translateY(-50%);
-  max-width: 500px;
-  animation: fade 1s ease;
-}
-
-@keyframes fade {
-  from {opacity:0; transform:translateY(40px);}
-  to {opacity:1; transform:translateY(-50%);}
+  position:absolute;
+  top:50%;
+  left:80px;
+  transform:translateY(-50%);
+  max-width:500px;
+  transition:0.5s;
 }
 
 .box {
-  background: rgba(255,255,255,0.08);
-  padding: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+  background:rgba(255,255,255,0.08);
+  padding:30px;
+  border-radius:20px;
+  backdrop-filter:blur(20px);
 }
 
+/* text */
 h1 {
-  font-size: 60px;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-size:65px;
+  font-weight:700;
+  margin-bottom:10px;
 }
 
 p {
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.6;
+  font-size:16px;
+  line-height:1.6;
 }
 
 /* navbar */
 .navbar {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 30px;
-  background: rgba(0,0,0,0.5);
-  padding: 12px 30px;
-  border-radius: 30px;
-  backdrop-filter: blur(15px);
-  z-index: 999;
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:30px;
+  background:rgba(0,0,0,0.5);
+  padding:12px 30px;
+  border-radius:30px;
+  backdrop-filter:blur(15px);
+  z-index:999;
 }
 
 .navbar a {
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  font-weight: 500;
-  position: relative;
+  color:white;
+  text-decoration:none;
+  cursor:pointer;
+  position:relative;
 }
 
 .navbar a.active::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background: #00ffd5;
-  bottom: -5px;
-  left: 0;
+  content:"";
+  position:absolute;
+  width:100%;
+  height:2px;
+  background:#00ffd5;
+  bottom:-5px;
+  left:0;
 }
 
 /* image */
-.img-box {
-  margin-top: 15px;
-}
-
 .img-box img {
-  width: 100%;
-  border-radius: 12px;
-  transition: 0.4s;
+  width:100%;
+  margin-top:15px;
+  border-radius:12px;
+  transition:0.4s;
 }
 
 .img-box img:hover {
-  transform: scale(1.05);
+  transform:scale(1.05);
 }
 
-/* tombol */
+/* button */
 .btn {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 30px;
-  background: rgba(0,0,0,0.5);
-  border: none;
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 999;
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:30px;
+  background:rgba(0,0,0,0.5);
+  border:none;
+  color:white;
+  padding:10px;
+  cursor:pointer;
+  z-index:999;
 }
 
-.left { left: 10px; }
-.right { right: 10px; }
+.left { left:10px; }
+.right { right:10px; }
 
 </style>
 </head>
@@ -195,8 +181,8 @@ p {
     <div class="bg" style="background-image:url('bg1.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
-      <h1>hai, saya jeremy</h1>
-      <p>portofolio modern dengan tampilan profesional dan interaktif.</p>
+      <h1>hai, saya jemy</h1>
+      <p>portofolio modern dengan gaya cinematic dan interaktif.</p>
     </div>
   </section>
 
@@ -205,7 +191,7 @@ p {
     <div class="overlay"></div>
     <div class="content box">
       <h1>TENTANG</h1>
-      <p>saya fokus belajar coding, web development, dan teknologi untuk masa depan.</p>
+      <p>saya adalah seseorang yang sedang belajar dan berkembang di dunia teknologi dan ingin menjadi lebih baik setiap hari.</p>
     </div>
   </section>
 
@@ -213,8 +199,8 @@ p {
     <div class="bg" style="background-image:url('bg3.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
-      <h1>KEAHLIAN</h1>
-      <p>html, python, excel</p>
+      <h1>SKILL</h1>
+      <p>mekanik kendaraan ringan</p>
       <div class="img-box">
         <img src="skill1.jpg">
       </div>
@@ -226,7 +212,7 @@ p {
     <div class="overlay"></div>
     <div class="content box">
       <h1>HOBBY</h1>
-      <p>ngoding dan eksplor teknologi</p>
+      <p>berkelana</p>
       <div class="img-box">
         <img src="hobby1.jpg">
       </div>
@@ -241,19 +227,22 @@ const slider = document.getElementById("slider");
 const nav = document.querySelectorAll(".navbar a");
 const progress = document.getElementById("progress");
 
+/* tombol */
 function move(dir){
   index += dir;
   if(index < 0) index = 0;
   if(index > 3) index = 3;
-  scroll();
+  scrollSlide();
 }
 
+/* navbar */
 function go(i){
   index = i;
-  scroll();
+  scrollSlide();
 }
 
-function scroll(){
+/* scroll */
+function scrollSlide(){
   slider.scrollTo({
     left: index * window.innerWidth,
     behavior: "smooth"
@@ -262,19 +251,33 @@ function scroll(){
   updateProgress();
 }
 
+/* update nav */
 function updateNav(){
   nav.forEach(n => n.classList.remove("active"));
   nav[index].classList.add("active");
 }
 
+/* progress bar */
 function updateProgress(){
   progress.style.width = ((index+1)/4)*100 + "%";
 }
 
+/* auto update saat scroll manual */
 slider.addEventListener("scroll", () => {
   index = Math.round(slider.scrollLeft / window.innerWidth);
   updateNav();
   updateProgress();
+});
+
+/* parallax mouse */
+document.addEventListener("mousemove", (e) => {
+  const bg = document.querySelectorAll(".bg");
+  let x = (e.clientX / window.innerWidth - 0.5) * 20;
+  let y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+  bg.forEach(el => {
+    el.style.transform = `translate(${x}px, ${y}px) scale(1.1)`;
+  });
 });
 </script>
 
