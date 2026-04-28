@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -21,67 +20,40 @@ body{
   background:#000;
 }
 
-/* INTRO */
-.intro{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  animation:fadeOut 2.5s ease forwards;
-  animation-delay:2s;
-}
-
-.intro h1{
-  font-size:45px;
-  color:#fff;
-  opacity:0;
-  animation:introIn 2s ease forwards;
-}
-
-@keyframes introIn{
-  0%{opacity:0; transform:scale(1.2); filter:blur(8px);}
-  100%{opacity:1; transform:scale(1); filter:blur(0);}
-}
-
-@keyframes fadeOut{
-  to{opacity:0; visibility:hidden;}
-}
-
 /* SLIDER */
 .container{
   display:flex;
   width:400vw;
   height:100vh;
-  transition:transform .7s ease;
+  transition:transform .85s cubic-bezier(0.77,0,0.175,1);
 }
 
+/* PAGE */
 section{
   width:100vw;
   height:100vh;
   position:relative;
   flex-shrink:0;
+  overflow-y:auto;
   color:#fff;
 }
 
-/* BACKGROUND */
+/* BG */
 .bg{
   position:absolute;
   width:100%;
   height:100%;
   background-size:cover;
   background-position:center;
-  filter:brightness(.5);
+  filter:brightness(.55);
 }
 
+/* OVERLAY */
 .overlay{
   position:absolute;
   width:100%;
   height:100%;
-  background:linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.2));
+  background:linear-gradient(to right,rgba(0,0,0,.88),rgba(0,0,0,.25));
 }
 
 /* CENTER */
@@ -89,217 +61,176 @@ section{
   position:absolute;
   top:50%;
   left:50%;
-  transform:translate(-50%,-50%);
+  transform:translate(-50%, -50%);
   width:90%;
-  max-width:520px;
+  max-width:550px;
 }
 
+/* BOX */
 .box{
   background:rgba(255,255,255,.08);
-  padding:25px;
-  border-radius:15px;
-  backdrop-filter:blur(10px);
-  box-shadow:0 10px 30px rgba(0,0,0,.6);
+  padding:32px;
+  border-radius:22px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 10px 40px rgba(0,0,0,.4);
 }
 
-/* TEXT */
+/* TITLE CAPS */
 h1{
-  font-size:38px;
+  font-size:52px;
+  font-weight:700;
   text-transform:uppercase;
-  margin-bottom:10px;
+  letter-spacing:2px;
+  margin-bottom:12px;
 }
 
 p{
-  font-size:14px;
-  line-height:1.6;
+  font-size:16px;
+  line-height:1.7;
   opacity:.9;
+  font-weight:300;
 }
 
-/* LIST PROFESSIONAL */
-.list{
-  margin-top:15px;
-}
-
-.list p{
-  font-size:14px;
-  margin:6px 0;
-  padding-left:10px;
-  border-left:2px solid rgba(255,255,255,.3);
-}
-
-/* IMAGE */
-.img-box{
-  margin-top:20px;
-  display:flex;
-  justify-content:center;
-}
-
+/* IMAGE FIX (KECILIN) */
 .img-box img{
-  width:120px;
-  height:120px;
-  object-fit:cover;
-  border-radius:12px;
-  box-shadow:0 8px 20px rgba(0,0,0,.5);
-  transition:.3s;
-}
-
-.img-box img:hover{
-  transform:scale(1.05);
+  width:45%;   /* 🔥 DICIUTIN DI SINI */
+  margin-top:18px;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  display:block;
 }
 
 /* NAV */
 .navbar{
   position:fixed;
-  top:15px;
+  top:18px;
   left:50%;
   transform:translateX(-50%);
   display:flex;
-  gap:12px;
+  gap:18px;
   background:rgba(0,0,0,.6);
-  padding:8px 14px;
-  border-radius:20px;
+  padding:10px 18px;
+  border-radius:30px;
   z-index:999;
+  backdrop-filter:blur(12px);
 }
 
 .navbar a{
   color:#fff;
   text-decoration:none;
-  font-size:12px;
-  cursor:pointer;
+  font-size:14px;
   opacity:.8;
-  transition:.3s;
+  cursor:pointer;
 }
 
 .navbar a:hover{
   opacity:1;
 }
 
-/* BUTTON */
+/* BTN */
 .btn{
   position:fixed;
   top:50%;
   transform:translateY(-50%);
+  font-size:26px;
   background:rgba(0,0,0,.5);
-  color:#fff;
   border:none;
-  padding:8px 10px;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:12px;
   cursor:pointer;
-  border-radius:8px;
-  transition:.3s;
+  z-index:999;
 }
 
-.btn:hover{
-  background:rgba(255,255,255,.2);
-}
-
-.left{left:10px;}
-.right{right:10px;}
+.left{left:12px;}
+.right{right:12px;}
 
 </style>
-
 </head>
 
 <body>
 
-<!-- INTRO -->
-
-<div class="intro">
-  <h1>HI, INI JEMY</h1>
-</div>
-
-<!-- NAV -->
-
 <div class="navbar">
-  <a onclick="go(0)">HOME</a>
+  <a onclick="go(0)">HI,INI JEMY</a>
   <a onclick="go(1)">TENTANG</a>
   <a onclick="go(2)">SKILL</a>
   <a onclick="go(3)">HOBBY</a>
 </div>
 
-<button class="btn left" onclick="move(-1)">❮</button> <button class="btn right" onclick="move(1)">❯</button>
+<button class="btn left" onclick="move(-1)">❮</button>
+<button class="btn right" onclick="move(1)">❯</button>
 
 <div class="container" id="slider">
 
   <!-- HOME -->
-
   <section>
-    <div class="bg" style="background:#111;"></div>
+    <div class="bg" style="background-image:url('bg1.jpg')"></div>
     <div class="overlay"></div>
     <div class="content">
       <div class="box">
-        <h1>HI, INI JEMY</h1>
-        <p>Portfolio clean dan simple.</p>
+        <h1>HI, JEMY</h1>
+        <p>portofolio modern, clean, dan profesional.</p>
       </div>
     </div>
   </section>
 
   <!-- TENTANG -->
-
   <section>
-    <div class="bg" style="background:#222;"></div>
+    <div class="bg" style="background-image:url('bg2.jpg')"></div>
     <div class="overlay"></div>
     <div class="content">
       <div class="box">
         <h1>TENTANG</h1>
-        <p>Saya belajar otomotif dan teknologi.</p>
+        <p>saya berkembang di dunia otomotif dan teknologi.</p>
       </div>
     </div>
   </section>
 
   <!-- SKILL -->
-
   <section>
-    <div class="bg" style="background:#333;"></div>
+    <div class="bg" style="background-image:url('bg3.jpg')"></div>
     <div class="overlay"></div>
     <div class="content">
       <div class="box">
 
-```
-    <h1>SKILL</h1>
+        <h1>SKILL</h1>
 
-    <div class="list">
-      <p>Mekanik Motor</p>
-      <p>Bore Up</p>
-      <p>Tune Up</p>
-      <p>Service Ringan</p>
-      <p>Upgrade Kaki-kaki</p>
+        <p>
+          mekanik sepeda motor<br>
+          bore up mesin<br>
+          tune up performa motor<br>
+          service ringan motor<br>
+          upgrade kirian / cvt setup
+        </p>
+
+        <div class="img-box">
+          <img src="skill1.jpg">
+        </div>
+
+      </div>
     </div>
-
-    <div class="img-box">
-      <img src="skill1.jpg">
-    </div>
-
-  </div>
-</div>
-```
-
   </section>
 
   <!-- HOBBY -->
-
   <section>
-    <div class="bg" style="background:#444;"></div>
+    <div class="bg" style="background-image:url('bg4.jpg')"></div>
     <div class="overlay"></div>
     <div class="content">
       <div class="box">
 
-```
-    <h1>HOBBY</h1>
+        <h1>HOBBY</h1>
 
-    <div class="list">
-      <p>Mendaki Gunung</p>
-      <p>Eksplor Curug</p>
-      <p>Ke Pantai</p>
+        <p>
+          berkelana:<br>
+          gunung • curug • pantai • bukit
+        </p>
+
+        <div class="img-box">
+          <img src="hobby1.jpg">
+        </div>
+
+      </div>
     </div>
-
-    <div class="img-box">
-      <img src="hobby1.jpg">
-    </div>
-
-  </div>
-</div>
-```
-
   </section>
 
 </div>
@@ -323,6 +254,20 @@ function go(i){
   index = i;
   update();
 }
+
+/* swipe */
+let startX = 0;
+
+document.addEventListener("touchstart", e=>{
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", e=>{
+  let endX = e.changedTouches[0].clientX;
+
+  if(startX - endX > 50) move(1);
+  if(endX - startX > 50) move(-1);
+});
 </script>
 
 </body>
