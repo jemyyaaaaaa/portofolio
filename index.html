@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PORTOFOLIO JEMY</title>
 
-<!-- FONT PREMIUM -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -39,7 +38,7 @@ section{
   color:#fff;
 }
 
-/* BACKGROUND */
+/* BG */
 .bg{
   position:absolute;
   width:100%;
@@ -57,7 +56,7 @@ section{
   background:linear-gradient(to right,rgba(0,0,0,.88),rgba(0,0,0,.25));
 }
 
-/* CENTER FIX */
+/* CENTER */
 .content{
   position:absolute;
   top:50%;
@@ -67,7 +66,7 @@ section{
   max-width:550px;
 }
 
-/* GLASS BOX */
+/* BOX */
 .box{
   background:rgba(255,255,255,.08);
   padding:32px;
@@ -76,7 +75,7 @@ section{
   box-shadow:0 10px 40px rgba(0,0,0,.4);
 }
 
-/* TITLE CAPSLOCK */
+/* TITLE CAPS */
 h1{
   font-size:52px;
   font-weight:700;
@@ -85,7 +84,6 @@ h1{
   margin-bottom:12px;
 }
 
-/* TEXT */
 p{
   font-size:16px;
   line-height:1.7;
@@ -93,15 +91,16 @@ p{
   font-weight:300;
 }
 
-/* IMAGE */
+/* IMAGE FIX (KECILIN) */
 .img-box img{
-  width:100%;
+  width:75%;   /* 🔥 DICIUTIN DI SINI */
   margin-top:18px;
   border-radius:14px;
   box-shadow:0 10px 30px rgba(0,0,0,.4);
+  display:block;
 }
 
-/* NAVBAR */
+/* NAV */
 .navbar{
   position:fixed;
   top:18px;
@@ -128,7 +127,7 @@ p{
   opacity:1;
 }
 
-/* BUTTON */
+/* BTN */
 .btn{
   position:fixed;
   top:50%;
@@ -152,7 +151,7 @@ p{
 <body>
 
 <div class="navbar">
-  <a onclick="go(0)">HOME</a>
+  <a onclick="go(0)">HI, JEMY</a>
   <a onclick="go(1)">TENTANG</a>
   <a onclick="go(2)">SKILL</a>
   <a onclick="go(3)">HOBBY</a>
@@ -169,7 +168,7 @@ p{
     <div class="overlay"></div>
     <div class="content">
       <div class="box">
-        <h1>HOME</h1>
+        <h1>HI, JEMY</h1>
         <p>portofolio modern, clean, dan profesional.</p>
       </div>
     </div>
@@ -182,7 +181,7 @@ p{
     <div class="content">
       <div class="box">
         <h1>TENTANG</h1>
-        <p>saya berkembang di dunia otomotif dan teknologi dengan fokus mekanik motor.</p>
+        <p>saya berkembang di dunia otomotif dan teknologi.</p>
       </div>
     </div>
   </section>
@@ -223,7 +222,7 @@ p{
 
         <p>
           berkelana:<br>
-          mendaki gunung • curug • pantai • bukit
+          gunung • curug • pantai • bukit
         </p>
 
         <div class="img-box">
@@ -256,7 +255,7 @@ function go(i){
   update();
 }
 
-/* swipe HP */
+/* swipe */
 let startX = 0;
 
 document.addEventListener("touchstart", e=>{
