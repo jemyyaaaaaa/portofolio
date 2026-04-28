@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>portofolio saya</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  overflow: hidden;
+  background: black;
+}
+
+/* LOADING */
+.loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  z-index: 9999;
+}
+
+/* CONTAINER */
+.container {
+  display: flex;
+  width: 400vw;
+  height: 100vh;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  scroll-snap-align: start;
+  color: white;
+}
+
+/* BACKGROUND PARALLAX */
+.bg {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4);
+  transform: scale(1.1);
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #000000cc, #00000033);
+}
+
+/* CONTENT */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 80px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: 1s;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(-50%);
+}
+
+.box {
+  background: rgba(255,255,255,0.1);
+  padding: 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  max-width: 450px;
+}
+
+h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+/* GRID FOTO */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.grid img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  background: rgba(0,0,0,0.4);
+  padding: 10px 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  z-index: 999;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+/* BUTTON */
+.btn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.left { left: 10px; }
+.right { right: 10px; }
+
+/* DOTS */
+.dots {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: gray;
+  border-radius: 50%;
+}
+
+.active {
+  background: white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="loader" id="loader">loading...</div>
+
+<div class="navbar">
+  <a href="#">home</a>
+  <a href="#">tentang</a>
+  <a href="#">skill</a>
+  <a href="#">hobby</a>
+</div>
+
+<button class="btn left" onclick="move(-1)">❮</button>
+<button class="btn right" onclick="move(1)">❯</button>
+
+<div class="container" id="slider">
+
+  <!-- HOME -->
+  <section>
+    <div class="bg" style="background-image:url('bg1.jpg')"></div>
+    <div class="overlay"></div>
+    <div class="content box">
+      <h1>hai, saya jemy</h1>
+      <p>ini portofolio dengan animasi dan desain modern.</p>
+    </div>
+  </section>
+
+  <!-- TENTANG -->
+  <section>
+    <div class="bg" style="background-image:url('bg2.jpg')"></div>
+    <div class="overlay"></div>
+    <div class="content box">
+      <h1>TENTANG</h1>
+      <p>saya sedang belajar membuat website dan ingin berkembang di dunia teknologi.</p>
+    </div>
+  </section>
+
+  <!-- KEAHLIAN -->
+  <section>
+    <div class="bg" style="background-image:url('bg3.jpg')"></div>
+    <div class="overlay"></div>
+    <div class="content box">
+      <h1>KEAHLIAN</h1>
+      <p>mekanik kendaraan ringan</p>
+
+      <div class="grid">
+        <img src="skill1.jpg">
+      </div>
+    </div>
+  </section>
+
+  <!-- HOBBY -->
+  <section>
+    <div class="bg" style="background-image:url('bg4.jpg')"></div>
+    <div class="overlay"></div>
+    <div class="content box">
+      <h1>HOBBY</h1>
+      <p>berkelana</p>
+
+      <div class="grid">
+        <img src="hobby1.jpg">
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="dots">
+  <div class="dot active"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</div>
+
+<script>
+let index = 0;
+const slider = document.getElementById("slider");
+const dots = document.querySelectorAll(".dot");
+const contents = document.querySelectorAll(".content");
+
+/* loading */
+window.onload = () => {
+  document.getElementById("loader").style.display = "none";
+  showContent();
+};
+
+function move(dir){
+  index += dir;
+  if(index < 0) index = 0;
+  if(index > 3) index = 3;
+
+  slider.scrollTo({
+    left: index * window.innerWidth,
+    behavior: "smooth"
+  });
+
+  update();
+}
+
+function update(){
+  dots.forEach(d => d.classList.remove("active"));
+  dots[index].classList.add("active");
+  showContent();
+}
+
+function showContent(){
+  contents.forEach(c => c.classList.remove("show"));
+  contents[index].classList.add("show");
+}
+
+/* scroll detect */
+slider.addEventListener("scroll", () => {
+  index = Math.round(slider.scrollLeft / window.innerWidth);
+  update();
+});
+</script>
+
+</body>
+</html>
