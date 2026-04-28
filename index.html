@@ -6,136 +6,164 @@
 <title>portofolio jemy</title>
 
 <style>
-* {
+*{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
 }
 
-body {
+body{
   overflow:hidden;
-  background:black;
+  background:#000;
 }
 
-/* SLIDER */
-.container {
+/* container */
+.container{
   display:flex;
   width:400vw;
   height:100vh;
-  transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
-  will-change: transform;
+  transition:transform .8s cubic-bezier(0.77,0,0.175,1);
 }
 
-/* PAGE */
-section {
+/* section */
+section{
   width:100vw;
   height:100vh;
   position:relative;
   flex-shrink:0;
-  color:white;
+  color:#fff;
+  overflow:hidden;
 }
 
-/* BACKGROUND */
-.bg {
+/* bg */
+.bg{
   position:absolute;
   width:100%;
   height:100%;
   background-size:cover;
   background-position:center;
-  filter:brightness(0.55);
+  filter:brightness(.55);
 }
 
-/* OVERLAY */
-.overlay {
+/* overlay */
+.overlay{
   position:absolute;
   width:100%;
   height:100%;
-  background:linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.3));
+  background:linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.2));
 }
 
-/* CONTENT */
-.content {
+/* content animation */
+.content{
   position:absolute;
   top:50%;
   left:80px;
-  transform:translateY(-50%);
+  transform:translateY(-50%) translateX(-20px);
+  opacity:0;
+  transition:.6s ease;
   max-width:520px;
 }
 
-.box {
-  background:rgba(255,255,255,0.08);
+section.active .content{
+  transform:translateY(-50%) translateX(0);
+  opacity:1;
+}
+
+.box{
+  background:rgba(255,255,255,.08);
   padding:30px;
   border-radius:20px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  backdrop-filter:blur(10px);
 }
 
-/* TEXT */
-h1 {
+/* text */
+h1{
   font-size:48px;
   margin-bottom:10px;
+  text-transform:lowercase;
 }
 
-p {
+p{
   font-size:16px;
   line-height:1.6;
-  opacity:0.9;
+  opacity:.9;
 }
 
-/* IMAGE */
-.img-box img {
+/* image */
+.img-box img{
   width:100%;
   margin-top:15px;
   border-radius:12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-/* NAVBAR */
-.navbar {
+/* navbar */
+.navbar{
   position:fixed;
   top:20px;
   left:50%;
   transform:translateX(-50%);
   display:flex;
   gap:18px;
-  background:rgba(0,0,0,0.6);
-  padding:10px 20px;
+  background:rgba(0,0,0,.6);
+  padding:10px 18px;
   border-radius:25px;
   z-index:999;
-  backdrop-filter: blur(10px);
+  backdrop-filter:blur(10px);
 }
 
-.navbar a {
-  color:white;
+.navbar a{
+  color:#fff;
   text-decoration:none;
-  cursor:pointer;
   font-size:14px;
-  opacity:0.85;
+  opacity:.8;
+  cursor:pointer;
 }
 
-.navbar a:hover {
+.navbar a:hover{
   opacity:1;
 }
 
-/* BUTTON */
-.btn {
+/* button */
+.btn{
   position:fixed;
   top:50%;
   transform:translateY(-50%);
-  font-size:26px;
-  background:rgba(0,0,0,0.5);
+  font-size:24px;
+  background:rgba(0,0,0,.5);
   border:none;
-  color:white;
+  color:#fff;
   padding:10px 14px;
+  border-radius:10px;
   cursor:pointer;
   z-index:999;
-  border-radius:12px;
 }
 
-.left { left:12px; }
-.right { right:12px; }
+.left{left:10px;}
+.right{right:10px;}
 
+/* dots navigation */
+.dots{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:10px;
+  z-index:999;
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#555;
+  cursor:pointer;
+}
+
+.dot.active{
+  background:#fff;
+}
 </style>
 </head>
 
@@ -151,15 +179,22 @@ p {
 <button class="btn left" onclick="move(-1)">❮</button>
 <button class="btn right" onclick="move(1)">❯</button>
 
+<div class="dots">
+  <div class="dot active" onclick="go(0)"></div>
+  <div class="dot" onclick="go(1)"></div>
+  <div class="dot" onclick="go(2)"></div>
+  <div class="dot" onclick="go(3)"></div>
+</div>
+
 <div class="container" id="slider">
 
   <!-- HOME -->
-  <section>
+  <section class="active">
     <div class="bg" style="background-image:url('bg1.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
       <h1>hai, saya jemy</h1>
-      <p>portofolio sederhana, clean, dan profesional.</p>
+      <p>portofolio clean dan modern.</p>
     </div>
   </section>
 
@@ -169,7 +204,7 @@ p {
     <div class="overlay"></div>
     <div class="content box">
       <h1>tentang</h1>
-      <p>saya sedang belajar teknologi dan terus berkembang setiap hari.</p>
+      <p>belajar dan berkembang di dunia otomotif & teknologi.</p>
     </div>
   </section>
 
@@ -178,12 +213,18 @@ p {
     <div class="bg" style="background-image:url('bg3.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
-      <h1>skill</h1>
-      <p>mekanik kendaraan ringan</p>
 
-      <!-- FIX: skill1 harus di sini -->
+      <h1>skill</h1>
+      <p>
+        mekanik sepeda motor<br>
+        bore up mesin<br>
+        tune up performa motor<br>
+        service ringan motor<br>
+        upgrade kirian / cvt
+      </p>
+
       <div class="img-box">
-        <img src="skill1.jpg" alt="skill">
+        <img src="skill1.jpg">
       </div>
 
     </div>
@@ -194,12 +235,15 @@ p {
     <div class="bg" style="background-image:url('bg4.jpg')"></div>
     <div class="overlay"></div>
     <div class="content box">
-      <h1>hobby</h1>
-      <p>berkelana</p>
 
-      <!-- FIX: hobby1 harus di sini -->
+      <h1>hobby</h1>
+      <p>
+        berkelana:<br>
+        gunung • curug • pantai • bukit
+      </p>
+
       <div class="img-box">
-        <img src="hobby1.jpg" alt="hobby">
+        <img src="hobby1.jpg">
       </div>
 
     </div>
@@ -210,9 +254,17 @@ p {
 <script>
 let index = 0;
 const slider = document.getElementById("slider");
+const sections = document.querySelectorAll("section");
+const dots = document.querySelectorAll(".dot");
 
 function update(){
   slider.style.transform = `translateX(-${index * 100}vw)`;
+
+  sections.forEach(s => s.classList.remove("active"));
+  sections[index].classList.add("active");
+
+  dots.forEach(d => d.classList.remove("active"));
+  dots[index].classList.add("active");
 }
 
 function move(dir){
@@ -227,14 +279,14 @@ function go(i){
   update();
 }
 
-/* swipe HP biar makin keren */
+/* swipe */
 let startX = 0;
 
-document.addEventListener("touchstart", e => {
+document.addEventListener("touchstart", e=>{
   startX = e.touches[0].clientX;
 });
 
-document.addEventListener("touchend", e => {
+document.addEventListener("touchend", e=>{
   let endX = e.changedTouches[0].clientX;
 
   if(startX - endX > 50) move(1);
